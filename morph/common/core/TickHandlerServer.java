@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import morph.api.Ability;
+import morph.api.Balance;
 import morph.common.Morph;
 import morph.common.ability.AbilityFly;
 import morph.common.ability.AbilityHandler;
@@ -30,6 +31,8 @@ import cpw.mods.fml.common.network.Player;
 public class TickHandlerServer 
 	implements ITickHandler
 {
+	Balance balance = new Balance();
+	
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) 
 	{
@@ -261,6 +264,8 @@ public class TickHandlerServer
 			player.prevPosY += ySize;
 			player.posY += ySize;
 		}
+		balance.handleNewPlayerTick(player);
+
 
 	}
 
